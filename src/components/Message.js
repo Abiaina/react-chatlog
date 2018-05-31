@@ -17,7 +17,7 @@ class Message extends React.Component {
   render() {
     // Fill in your code here
     return(
-      <div>
+      <div className="entry-bubble">
         <div className="entry-name">
         {this.props.sender}
         </div>

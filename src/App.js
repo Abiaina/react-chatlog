@@ -10,14 +10,25 @@ class App extends Component {
   render() {
     console.log(chatMessages);
 
+    const isLocal = (author) => {
+      if(author === 'Vladimir'){
+        return 'local'
+      }
+      return 'remote'
+    }
+
     const messageComponents = chatMessages.map((chatMessage, i=0) => {
       i += 1
       return (
-          < Message
-            sender = {chatMessage.sender}
-            body = {chatMessage.body}
-            timeStamp = {chatMessage.timeStamp}
-          />
+        <section className="chat-entry">
+          <output className={isLocal(chatMessage.sender)}>
+              < Message
+                sender = {chatMessage.sender}
+                body = {chatMessage.body}
+                timeStamp = {chatMessage.timeStamp}
+              />
+          </output>
+        </section>
       );
   });
 
@@ -27,7 +38,7 @@ class App extends Component {
           <h1 className="App-title">Application title</h1>
         </header>
         <main className="App-main">
-          <div className="chat-entry">
+          <div>
             {messageComponents}
           </div>
         </main>
